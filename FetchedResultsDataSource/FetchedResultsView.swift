@@ -8,37 +8,37 @@
 
 import Foundation
 
-protocol FetchedResultsViewDataSource: UITableViewDataSource, UICollectionViewDataSource {}
+public protocol FetchedResultsViewDataSource: UITableViewDataSource, UICollectionViewDataSource {}
 
-protocol FetchedResultsViewCell {
+public protocol FetchedResultsViewCell {
     init()
 }
 extension UITableViewCell: FetchedResultsViewCell {}
 extension UICollectionViewCell: FetchedResultsViewCell {}
 
-protocol FetchedResultsView {
+public protocol FetchedResultsView {
     var fetchedResultsDataSource: FetchedResultsViewDataSource? { set get }
     func dequeueReusableViewCell(withIdentifier identifier: String, for indexpath: IndexPath) -> FetchedResultsViewCell
     func reloadData()
 }
 
 extension UITableView: FetchedResultsView {
-    func dequeueReusableViewCell(withIdentifier identifier: String, for indexpath: IndexPath) -> FetchedResultsViewCell {
+    public func dequeueReusableViewCell(withIdentifier identifier: String, for indexpath: IndexPath) -> FetchedResultsViewCell {
         return dequeueReusableCell(withIdentifier: identifier, for: indexpath) as FetchedResultsViewCell
     }
     
-    var fetchedResultsDataSource: FetchedResultsViewDataSource? {
+    public var fetchedResultsDataSource: FetchedResultsViewDataSource? {
         get { return (dataSource as! FetchedResultsViewDataSource) }
         set { dataSource = (newValue! as UITableViewDataSource) }
     }
 }
 
 extension UICollectionView: FetchedResultsView {
-    func dequeueReusableViewCell(withIdentifier identifier: String, for indexpath: IndexPath) -> FetchedResultsViewCell {
+    public func dequeueReusableViewCell(withIdentifier identifier: String, for indexpath: IndexPath) -> FetchedResultsViewCell {
         return dequeueReusableCell(withReuseIdentifier: identifier, for: indexpath) as FetchedResultsViewCell
     }
     
-    var fetchedResultsDataSource: FetchedResultsViewDataSource? {
+    public var fetchedResultsDataSource: FetchedResultsViewDataSource? {
         get { return (dataSource as! FetchedResultsViewDataSource) }
         set { dataSource = (newValue! as UICollectionViewDataSource) }
     }

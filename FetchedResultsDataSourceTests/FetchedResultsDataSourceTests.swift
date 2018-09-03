@@ -7,7 +7,23 @@
 //
 
 import XCTest
+import UIKit
+import CoreData
 @testable import FetchedResultsDataSource
+
+
+class Dummy: FetchedResultsDataSourceDelegate {
+    static var cellIdentifier = "Cell"
+    
+    func configureCell(view: UITableView, cell: UITableViewCell, object: NSManagedObject) -> UITableViewCell {
+        return cell
+    }
+}
+
+class Foo: UIFetchedResultsDataSource<Dummy> {
+    
+}
+
 
 class FetchedResultsDataSourceTests: XCTestCase {
     

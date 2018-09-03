@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-protocol FetchedResultsDataSourceDelegate {
+public protocol FetchedResultsDataSourceDelegate {
     associatedtype View: FetchedResultsView
     associatedtype ViewCell: FetchedResultsViewCell
     
@@ -20,20 +20,16 @@ protocol FetchedResultsDataSourceDelegate {
     func configureCell(view: View, cell: CustomCell, object: Entity) -> ViewCell
 }
 
-class UIFetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelegate>: NSObject, FetchedResultsViewDataSource {
-    typealias View = Delegate.View
-    typealias ViewCell = Delegate.ViewCell
-    typealias Entity = Delegate.Entity
-    typealias CustomCell = Delegate.CustomCell
-    
-    var fetchedResultsController: NSFetchedResultsController<Entity>
+public class UIFetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelegate>: NSObject, FetchedResultsViewDataSource {
+
+    var fetchedResultsController: NSFetchedResultsController<Delegate.Entity>
     var delegate: Delegate?
-    var fetchedResultsView: View?
+    var fetchedResultsView: Delegate.View?
     
-    static func setup(
-        fetchedResultsView: View,
+    public static func setup(
+        fetchedResultsView: Delegate.View,
         delegate: Delegate,
-        fetchRequest: NSFetchRequest<Entity>,
+        fetchRequest: NSFetchRequest<Delegate.Entity>,
         context: NSManagedObjectContext,
         sectionNameKeyPath: String? = nil) -> UIFetchedResultsDataSource
     {
@@ -43,7 +39,7 @@ class UIFetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelegate>: NS
         return dataSource
     }
     
-    init(fetchRequest: NSFetchRequest<Entity>, context: NSManagedObjectContext, sectionNameKeyPath: String? = nil) {
+    init(fetchRequest: NSFetchRequest<Delegate.Entity>, context: NSManagedObjectContext, sectionNameKeyPath: String? = nil) {
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: context,
@@ -53,7 +49,7 @@ class UIFetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelegate>: NS
         super.init()
     }
     
-    func performFetchAndReload(view: View) {
+    public func performFetchAndReload(view: Delegate.View) {
         fetchedResultsView = view
         fetchedResultsView?.fetchedResultsDataSource = self
         try! fetchedResultsController.performFetch()
@@ -83,56 +79,56 @@ class UIFetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelegate>: NS
         return fetchedResultsController.section(forSectionIndexTitle: title, at: index)
     }
     
-    private func cell(_ view: View, ForRowAt indexPath: IndexPath) -> ViewCell {
-        guard let delegate = delegate else { return CustomCell() as! ViewCell }
+    private func cell(_ view: Delegate.View, ForRowAt indexPath: IndexPath) -> Delegate.ViewCell {
+        guard let delegate = delegate else { return Delegate.CustomCell() as! Delegate.ViewCell }
         let cell = view.dequeueReusableViewCell(withIdentifier: Delegate.cellIdentifier, for: indexPath)
-        guard let customCell = cell as? CustomCell else { return cell as! ViewCell }
+        guard let customCell = cell as? Delegate.CustomCell else { return cell as! Delegate.ViewCell }
         let object = fetchedResultsController.object(at: indexPath)
         return delegate.configureCell(view: view, cell: customCell, object: object)
     }
     
     // MARK: UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return numberOfSections()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfRows(in: section)
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return titleForHeader(in: section)
     }
     
-    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+    public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return section(forSectionIndexTitle: title, at: index)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cell(tableView as! View, ForRowAt: indexPath) as! UITableViewCell
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return cell(tableView as! Delegate.View, ForRowAt: indexPath) as! UITableViewCell
     }
     
     // MARK: UICollectionViewDataSource
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return numberOfSections()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfRows(in: section)
     }
     
-    func collectionView(_ collectionView: UICollectionView, titleForHeaderInSection section: Int) -> String? {
+    public func collectionView(_ collectionView: UICollectionView, titleForHeaderInSection section: Int) -> String? {
         return titleForHeader(in: section)
     }
     
-    func collectionView(_ collectionView: UICollectionView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return section(forSectionIndexTitle: title, at: index)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return cell(collectionView as! View, ForRowAt: indexPath) as! UICollectionViewCell
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return cell(collectionView as! Delegate.View, ForRowAt: indexPath) as! UICollectionViewCell
     }
 }
 
