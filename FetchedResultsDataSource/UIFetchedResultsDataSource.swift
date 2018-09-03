@@ -20,7 +20,7 @@ protocol FetchedResultsDataSourceDelegate {
     func configureCell(view: View, cell: CustomCell, object: Entity) -> ViewCell
 }
 
-class FetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelegate>: NSObject, FetchedResultsViewDataSource {
+class UIFetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelegate>: NSObject, FetchedResultsViewDataSource {
     typealias View = Delegate.View
     typealias ViewCell = Delegate.ViewCell
     typealias Entity = Delegate.Entity
@@ -35,9 +35,9 @@ class FetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelegate>: NSOb
         delegate: Delegate,
         fetchRequest: NSFetchRequest<Entity>,
         context: NSManagedObjectContext,
-        sectionNameKeyPath: String? = nil) -> FetchedResultsDataSource
+        sectionNameKeyPath: String? = nil) -> UIFetchedResultsDataSource
     {
-        let dataSource = FetchedResultsDataSource(fetchRequest: fetchRequest, context: context)
+        let dataSource = UIFetchedResultsDataSource(fetchRequest: fetchRequest, context: context)
         dataSource.delegate = delegate
         dataSource.performFetchAndReload(view: fetchedResultsView)
         return dataSource

@@ -10,7 +10,7 @@
 		9BDF5175213D44A500CD7E58 /* FetchedResultsDataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDF516B213D44A400CD7E58 /* FetchedResultsDataSource.framework */; };
 		9BDF517A213D44A500CD7E58 /* FetchedResultsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF5179213D44A500CD7E58 /* FetchedResultsDataSourceTests.swift */; };
 		9BDF517C213D44A500CD7E58 /* FetchedResultsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BDF516E213D44A400CD7E58 /* FetchedResultsDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9BDF5186213D44E500CD7E58 /* FetchedResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF5185213D44E500CD7E58 /* FetchedResultsDataSource.swift */; };
+		9BDF5186213D44E500CD7E58 /* UIFetchedResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF5185213D44E500CD7E58 /* UIFetchedResultsDataSource.swift */; };
 		9BDF5188213D450E00CD7E58 /* FetchedResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF5187213D450E00CD7E58 /* FetchedResultsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +31,7 @@
 		9BDF5174213D44A500CD7E58 /* FetchedResultsDataSourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchedResultsDataSourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDF5179213D44A500CD7E58 /* FetchedResultsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsDataSourceTests.swift; sourceTree = "<group>"; };
 		9BDF517B213D44A500CD7E58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BDF5185213D44E500CD7E58 /* FetchedResultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsDataSource.swift; sourceTree = "<group>"; };
+		9BDF5185213D44E500CD7E58 /* UIFetchedResultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFetchedResultsDataSource.swift; sourceTree = "<group>"; };
 		9BDF5187213D450E00CD7E58 /* FetchedResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,7 +77,7 @@
 			children = (
 				9BDF516E213D44A400CD7E58 /* FetchedResultsDataSource.h */,
 				9BDF516F213D44A400CD7E58 /* Info.plist */,
-				9BDF5185213D44E500CD7E58 /* FetchedResultsDataSource.swift */,
+				9BDF5185213D44E500CD7E58 /* UIFetchedResultsDataSource.swift */,
 				9BDF5187213D450E00CD7E58 /* FetchedResultsView.swift */,
 			);
 			path = FetchedResultsDataSource;
@@ -201,7 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BDF5186213D44E500CD7E58 /* FetchedResultsDataSource.swift in Sources */,
+				9BDF5186213D44E500CD7E58 /* UIFetchedResultsDataSource.swift in Sources */,
 				9BDF5188213D450E00CD7E58 /* FetchedResultsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
