@@ -10,6 +10,8 @@
 		9BDF5175213D44A500CD7E58 /* FetchedResultsDataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDF516B213D44A400CD7E58 /* FetchedResultsDataSource.framework */; };
 		9BDF517A213D44A500CD7E58 /* FetchedResultsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF5179213D44A500CD7E58 /* FetchedResultsDataSourceTests.swift */; };
 		9BDF517C213D44A500CD7E58 /* FetchedResultsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BDF516E213D44A400CD7E58 /* FetchedResultsDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BDF5186213D44E500CD7E58 /* FetchedResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF5185213D44E500CD7E58 /* FetchedResultsDataSource.swift */; };
+		9BDF5188213D450E00CD7E58 /* FetchedResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF5187213D450E00CD7E58 /* FetchedResultsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		9BDF5174213D44A500CD7E58 /* FetchedResultsDataSourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchedResultsDataSourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDF5179213D44A500CD7E58 /* FetchedResultsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsDataSourceTests.swift; sourceTree = "<group>"; };
 		9BDF517B213D44A500CD7E58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BDF5185213D44E500CD7E58 /* FetchedResultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsDataSource.swift; sourceTree = "<group>"; };
+		9BDF5187213D450E00CD7E58 /* FetchedResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				9BDF516E213D44A400CD7E58 /* FetchedResultsDataSource.h */,
 				9BDF516F213D44A400CD7E58 /* Info.plist */,
+				9BDF5185213D44E500CD7E58 /* FetchedResultsDataSource.swift */,
+				9BDF5187213D450E00CD7E58 /* FetchedResultsView.swift */,
 			);
 			path = FetchedResultsDataSource;
 			sourceTree = "<group>";
@@ -148,6 +154,7 @@
 				TargetAttributes = {
 					9BDF516A213D44A400CD7E58 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					9BDF5173213D44A500CD7E58 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -194,6 +201,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BDF5186213D44E500CD7E58 /* FetchedResultsDataSource.swift in Sources */,
+				9BDF5188213D450E00CD7E58 /* FetchedResultsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +348,7 @@
 		9BDF5180213D44A500CD7E58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -356,6 +366,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.riywo.FetchedResultsDataSource;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +375,7 @@
 		9BDF5181213D44A500CD7E58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -389,6 +401,7 @@
 		9BDF5183213D44A500CD7E58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y7WL9W42JR;
 				INFOPLIST_FILE = FetchedResultsDataSourceTests/Info.plist;
@@ -407,6 +420,7 @@
 		9BDF5184213D44A500CD7E58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y7WL9W42JR;
 				INFOPLIST_FILE = FetchedResultsDataSourceTests/Info.plist;
