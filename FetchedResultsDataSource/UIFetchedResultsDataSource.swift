@@ -22,9 +22,9 @@ public protocol FetchedResultsDataSourceDelegate {
 
 public class UIFetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelegate>: NSObject, FetchedResultsViewDataSource {
 
-    var fetchedResultsController: NSFetchedResultsController<Delegate.Entity>
-    var delegate: Delegate?
-    var fetchedResultsView: Delegate.View?
+    public var fetchedResultsController: NSFetchedResultsController<Delegate.Entity>
+    public var delegate: Delegate?
+    public var fetchedResultsView: Delegate.View?
     
     public static func setup(
         fetchedResultsView: Delegate.View,
