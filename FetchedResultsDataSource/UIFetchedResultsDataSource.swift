@@ -33,7 +33,7 @@ public class UIFetchedResultsDataSource<Delegate: FetchedResultsDataSourceDelega
         context: NSManagedObjectContext,
         sectionNameKeyPath: String? = nil) -> UIFetchedResultsDataSource
     {
-        let dataSource = UIFetchedResultsDataSource(fetchRequest: fetchRequest, context: context)
+        let dataSource = UIFetchedResultsDataSource(fetchRequest: fetchRequest, context: context, sectionNameKeyPath: sectionNameKeyPath)
         dataSource.delegate = delegate
         dataSource.performFetchAndReload(view: fetchedResultsView)
         return dataSource
